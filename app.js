@@ -1,11 +1,13 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon'); // importados desde el servidor 
-										// al hacer npm install (no estan en express)
+
+// importados desde el servidor 
+// al hacer npm install (no estan en express)
+var favicon = require('serve-favicon');      // lo importa pero no instala (esta comentado)
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+//            ------ 
 var routes = require('./routes/index');  // importamos los enrutadores
 
 var app = express();	// creamos la aplicación
@@ -32,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 ////middelwares sobre los que generamos la logica de nuestra aplicacion
-app.use('/', routes);		//   
+app.use('/', routes);		// lo usamos  
 
 //middelware que se ejecutara para cualquier ruta que no sea "/" o "/users"
 // catch 404 and forward to error handler
