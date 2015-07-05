@@ -1,13 +1,12 @@
 var express = require('express');
 var path = require('path');
-
-// importados desde el servidor 
-// al hacer npm install (no estan en express)
-var favicon = require('serve-favicon');      // lo importa pero no instala (esta comentado)
+var favicon = require('serve-favicon'); // importados desde el servidor 
+										// al hacer npm install (no estan en express)
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//            ------ 
+var partials= require('express-partials'); // para utilizara layouts y solo cambiar las visatas dentro de section
+
 var routes = require('./routes/index');  // importamos los enrutadores
 
 var app = express();	// creamos la aplicación
@@ -21,6 +20,7 @@ app.set('view engine', 'ejs');		// generador de vistas que utiliza rubi & race
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
+app.use(partials());
 
 
 ////middelwares asociados a lo que hemos importado
@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 ////middelwares sobre los que generamos la logica de nuestra aplicacion
-app.use('/', routes);		// lo usamos  
+app.use('/', routes);		//   
 
 //middelware que se ejecutara para cualquier ruta que no sea "/" o "/users"
 // catch 404 and forward to error handler
