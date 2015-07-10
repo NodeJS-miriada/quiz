@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+var debug = require('debug')('quiz');
+var app = require('../app');
+
+app.set('port', process.env.PORT || 3000);
+
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+  console.log("Servidor escuchando en puerto %d ", process.env.PORT);
+  console.error(JSON.stringify({ status: "ok", port: process.env.PORT }));
+
+});
+
