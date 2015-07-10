@@ -14,7 +14,7 @@ router.get('/quizes/question', quizController.question);
 router.get('/quizes/answer', quizController.answer);
 router.get('/author', function(req, res) {
   ////dibuja el fichero index con titulo express
-  res.render('autores', { title: 'Quiz' });
+  res.render('autores.ejs', { title: 'Quiz' });
 });
 
 //// exportan los middelware instalados, es lo que se instalara en la app
