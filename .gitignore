@@ -27,3 +27,5 @@ build/Release
 node_modules
 
 git_proyects
+
+quiz.sqlite
