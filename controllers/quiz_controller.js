@@ -13,6 +13,8 @@ exports.question=function(req,res){
 	})
 };
 
+
+
 // GET para quizes/answer
 exports.answer=function(req,res){
 	models.Quiz.findAll().success(function(quiz){
