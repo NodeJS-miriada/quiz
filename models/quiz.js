@@ -1,4 +1,4 @@
-module.exports = function(squelize,DataTypes){
+module.exports = function(sequelize,DataTypes){
   return sequelize.define('Quiz',
       { pregunta:DataTypes.STRING,
         respuesta:DataTypes.STRING,

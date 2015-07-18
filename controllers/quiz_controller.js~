@@ -8,17 +8,17 @@ var models=require('../models/models.js');
 
 // GET para quizes/question
 exports.question=function(req,res){
-	models.Quiz.findAll().success(function(quiz){
-		res.render('quizes/question',{pregunta:quiz[0].pregunta});
+	models.Quiz.findAll().sucess(function(quiz){
+		res.render('quizes/question',{pregunta:Quiz[0].pregunta});
 	})
 };
 
 // GET para quizes/answer
 exports.answer=function(req,res){
-	models.Quiz.findAll().success(function(quiz){
-		resp=quiz[0].respuesta;
+	models.Quiz.findAll().sucess(function(quiz){
+		res=Quiz[0],respuesta;
 		//if (rexExp.test(req.query.respuesta)){
-		if (req.query.respuesta===resp){
+		if (req.query.respuesta===res){
 			res.render('quizes/answer',{respuesta:"Correcta"});
 		}else{
 			res.render('quizes/answer',{respuesta:"Incorrecta"});

@@ -14,8 +14,7 @@ var app = express();	// creamos la aplicación
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));// une directorio actual con views (genera el path absoluto)
 app.set('view engine', 'ejs');		// generador de vistas que utiliza rubi & race
-									// que es mas claro que el que pone express
-									// que se llama jade
+									// que dice es mas claro que el que pone express (jade)
 
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/favicon.ico'));
