@@ -55,6 +55,11 @@ footer a:first-child {
 nav span { margin: 0 10px 0 0; }
 
 #vide0 { height:350px;}
+
+table.main th { border-bottom: 2px solid blue; padding-bottom:5px;padding-top:10px}
+
+#ErrorMsgs { color: #f61; font-size: smaller }
+
 /*
 nav span             { margin: 0px 10px 0px 0px;
                        width: 100%;

@@ -1,6 +1,18 @@
-module.exports = function(sequelize,DataTypes){
+module.exports = function(sequelize, DataTypes) {
   return sequelize.define('Quiz',
-      { pregunta:DataTypes.STRING,
-        respuesta:DataTypes.STRING,
-      });
+    { pregunta: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: { msg: "-> Falta pregunta" }}
+      },
+      respuesta: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: { msg: "-> Falta respuesta" }}
+      },
+      tema: {
+        type: DataTypes.ENUM,
+        values: ['otro','humanidades','ocio','ciencia','tecnologia'],
+        defaultValue: 'otro',
+        validate: { isIn: [['otro','humanidades','ocio','ciencia','tecnologia']] } 
+      }
+    });
 }

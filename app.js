@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials= require('express-partials'); // para utilizara layouts y solo cambiar las visatas dentro de section
+var methodOverride = require('method-override');
 
 var routes = require('./routes/index');  // importamos los enrutadores
 
@@ -25,8 +26,10 @@ app.use(partials());
 ////middelwares asociados a lo que hemos importado
 app.use(logger('dev')); 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//10b//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded()); 
 app.use(cookieParser());
+app.use(methodOverride('_method')); 
 
 ////static viene de serie desde la version 4 por eso no se importa
 //// se ha instalado con .use pero se instala con get ¿?
@@ -52,8 +55,8 @@ if (app.get('env') === 'development') {
         res.status(err.status || 500);	// pone render.status si existe sino pone 500
         res.render('error', {           // llama a views error.ejs
             message: err.message,		//llena el parametro <%=message %> de error.ejs
-            error: err					// llena error.status y error.stack de error.ejs
-										// error: err es +todo el stack de error
+            error: err,					// llena error.status y error.stack de error.ejs
+						errors:[]				// error: err es +todo el stack de error
         });
     });
 }
@@ -73,7 +76,8 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
-        error: {}
+        error: {},
+        errors:[]
     });
 });
 
